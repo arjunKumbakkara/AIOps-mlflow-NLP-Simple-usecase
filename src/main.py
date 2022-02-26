@@ -2,7 +2,7 @@ import mlflow
 import argparse
 
 def main():
-    mlflow.set_tracking_uri("http://127.0.0.1:1234")
+    #mlflow.set_tracking_uri("http://127.0.0.1:4565")
 
     with mlflow.start_run() as run:
         mlflow.run(".", "stage_01", use_conda=False)
