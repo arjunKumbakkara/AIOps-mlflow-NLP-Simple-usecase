@@ -23,3 +23,13 @@ MLFLOW NLP project
     ```bash
     mlflow run . -e entry_point_name
     ```
+
+
+* Once all that is done : Instead of calling mlflow ui without model registry , fire the below command , Remember to track the same on all stages ---(1)
+    ```bash
+    mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts --host 127.0.0.1 --port 5700
+    ```
+
+---(1) : This is for tracking purpose
+
+
