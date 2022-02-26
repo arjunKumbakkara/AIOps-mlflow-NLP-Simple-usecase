@@ -8,5 +8,8 @@ pyyaml
 scikit-learn
 lxml
 botocore
+matplotlib
+torch
+#sklearn : already comes with mlflow
 ### local packages -
 -e . # << uncomment this to install from setup.py
