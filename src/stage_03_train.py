@@ -20,7 +20,9 @@ logging.basicConfig(
     )
 
 def main(config_path, params_path):
-    mlflow.set_tracking_uri("http://127.0.0.1:1234")
+    
+    #Model Registry
+    #mlflow.set_tracking_uri("http://127.0.0.1:1234")
 
     config = read_yaml(config_path)
     params = read_yaml(params_path)
@@ -47,6 +49,7 @@ def main(config_path, params_path):
     n_est = params["train"]["n_est"]
     min_split = params["train"]['min_split']
 
+    # Mlflow Log parameter: 
     # mlflow.log_param("seed", seed)
     # mlflow.log_param("n_est", n_est)
     # mlflow.log_param("min_split", min_split)
@@ -60,8 +63,12 @@ def main(config_path, params_path):
     )
     model.fit(X, labels)
 
-    # joblib.dump(model, model_path)
-    mlflow.sklearn.log_model(model, "model", registered_model_name="model_one")
+    #DVC based way of dumping the model.
+    joblib.dump(model, model_path)
+    
+
+    #mlflow log_model is better because in the joblib way the model gets replaced.However, in this, the version wise the model gets logged.
+    #mlflow.sklearn.log_model(model, "model", registered_model_name="model_one")
 
 
 
